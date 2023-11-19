@@ -4,6 +4,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mood_tunes/models/cards.dart';
 import 'package:mood_tunes/models/drawer_items.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:mood_tunes/models/song_model.dart';
+import 'package:mood_tunes/screens/album_screen.dart';
+import 'package:mood_tunes/screens/display_playlist.dart';
+import 'package:mood_tunes/screens/search_screen.dart';
+import 'package:mood_tunes/screens/song_list.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key});
@@ -51,7 +56,9 @@ class HomeScreen extends StatelessWidget {
                   color: Theme.of(context).primaryColor,
                 ),
                 child: Text(
-                  'Your Name', // Add user's name or username dynamically
+                  // Adding user's name or username dynamically from auth
+                  'Darshan',
+
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 24,
@@ -64,6 +71,7 @@ class HomeScreen extends StatelessWidget {
                 onTap: () {
                   // Navigate to playlists screen or perform an action
                   // Example: Get.toNamed('/playlists');
+                  Get.to(DisplayPlaylistScreen());
                 },
               ),
               DrawerItem(
@@ -113,6 +121,27 @@ class HomeScreen extends StatelessWidget {
                 onTap: () {
                   // Navigate to radio screen or perform an action
                   // Example: Get.toNamed('/radio');
+                },
+              ),
+              DrawerItem(
+                icon: Icons.radio,
+                title: 'My Songs',
+                onTap: () {
+                  Get.to(MySongsList());
+                },
+              ),
+              DrawerItem(
+                icon: Icons.search,
+                title: 'search',
+                onTap: () {
+                  Get.to(SearchSongs());
+                },
+              ),
+              DrawerItem(
+                icon: Icons.search,
+                title: 'album',
+                onTap: () {
+                  Get.to(SearchAlbums());
                 },
               ),
             ],

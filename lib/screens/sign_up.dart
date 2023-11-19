@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:mood_tunes/models/text_fields_.dart';
 import 'package:mood_tunes/screens/home.dart';
+import 'package:mood_tunes/user_controller.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -139,6 +140,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         email: _emailController.text.trim(),
         password: _passwordController.text,
       );
+      Get.find<UserController>().setUser(_auth.currentUser);
 
       Get.off(HomeScreen());
     } catch (e) {

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:mood_tunes/models/song_model.dart';
 import 'package:mood_tunes/screens/forgot_password.dart';
 import 'package:mood_tunes/screens/home.dart';
 import 'package:mood_tunes/screens/login.dart';
 import 'package:mood_tunes/screens/sign_up.dart';
+import 'package:mood_tunes/screens/song_list.dart';
+import 'package:mood_tunes/user_controller.dart';
 import 'screens/splash_screen.dart';
 import 'firebase_options.dart';
 
@@ -60,12 +63,17 @@ class MyApp extends StatelessWidget {
         ),
       ),
       initialRoute: '/splash',
+      initialBinding: BindingsBuilder(() {
+        Get.put(UserController(), permanent: true);
+      }),
+
       getPages: [
         GetPage(name: '/splash', page: () => SplashScreen()),
         GetPage(name: '/home', page: () => HomeScreen()),
         GetPage(name: '/login', page: () => LoginScreen()),
         GetPage(name: '/signup', page: () => SignUpScreen()),
         GetPage(name: '/forgot-password', page: () => ForgotPasswordScreen()),
+        GetPage(name: '/songlist', page: () => MySongsList()),
       ],
     );
   }

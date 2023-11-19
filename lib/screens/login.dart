@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mood_tunes/screens/forgot_password.dart';
 import 'package:mood_tunes/screens/sign_up.dart';
 import 'package:mood_tunes/models/text_fields_.dart';
+import 'package:mood_tunes/user_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -152,6 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
         email: _emailController.text.trim(),
         password: _passwordController.text,
       );
+      Get.find<UserController>().setUser(_auth.currentUser);
 
       Get.offNamed('/home');
     } catch (e) {
